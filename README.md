@@ -11,7 +11,7 @@ This repository contains my solutions and notes for the Bandit wargame challenge
 
 ## Structure
 
-- `bandit*.txt` files contain solutions and notes for specific levels
+- `bandit*.txt` files contain solutions and notes for specific levels ......the string data in double inverted commas is the pasword to the next level.
 - `sshkeysinfo.txt` contains SSH connection information
 - PNG files contain screenshots of important commands and their outputs
 - `bandit` file contains additional scripts and solutions
