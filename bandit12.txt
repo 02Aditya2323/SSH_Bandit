@@ -1,0 +1,91 @@
+bandit12@bandit:~$ cd /temp/sigmalol
+-bash: cd: /temp/sigmalol: No such file or directory
+bandit12@bandit:~$ cd /temp
+-bash: cd: /temp: No such file or directory
+bandit12@bandit:~$ cd /
+bandit12@bandit:/$ cd temp
+-bash: cd: temp: No such file or directory
+bandit12@bandit:/$ cd tmp
+bandit12@bandit:/tmp$ cd sigmalol
+bandit12@bandit:/tmp/sigmalol$ ls
+bandit12@bandit:/tmp/sigmalol$ ls
+bandit12@bandit:/tmp/sigmalol$ ls
+bandit12@bandit:/tmp/sigmalol$ ls
+bandit12@bandit:/tmp/sigmalol$ cd ~
+bandit12@bandit:~$ cp data.txt /tmp/sigmalol
+bandit12@bandit:~$ cd /tmp/sigmalol
+bandit12@bandit:/tmp/sigmalol$ ls
+data.txt
+bandit12@bandit:/tmp/sigmalol$ xxd -r data.txt > tester
+bandit12@bandit:/tmp/sigmalol$ ls
+data.txt  tester
+bandit12@bandit:/tmp/sigmalol$ file tester
+tester: gzip compressed data, was "data2.bin", last modified: Thu Apr 10 14:22:57 2025, max compression, from Unix, original size modulo 2^32 585
+bandit12@bandit:/tmp/sigmalol$ mv tester tester.gz
+bandit12@bandit:/tmp/sigmalol$ gunzip tester.gz 
+bandit12@bandit:/tmp/sigmalol$ ls
+data.txt  tester
+bandit12@bandit:/tmp/sigmalol$ file tester
+tester: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/sigmalol$ cat tester
+4 4??hH??D0UP?k?.?"˟?????D?p?QG?l??J??΄?x Fc4?
+
+
+
+
+??px??[?h???oFw9 D???9A???\Ѽ-?1?l?N?(^?@Z@T!??I2_=pi@?????(,Q?I??/bݐ'?y??R?
+                                                                           ???t?????2Z??????<wm?i?<G?f?K???j	F??]	?pk??%??
+
+??Zip?47??@??X\5?<?ڟQ??զ??G?8?P?????B?eI@
+?????P?YK?+?? ??$??N??%Φ?g?Nm!A6*?)-f8<!??N??O,???6Ɉ?V8?w$S?	
+??x?bandit12@bandit:/tmp/sigmalol$ 
+bandit12@bandit:/tmp/sigmalol$ mv tester tester.bz2
+bandit12@bandit:/tmp/sigmalol$ ls
+data.txt  tester.bz2
+bandit12@bandit:/tmp/sigmalol$ bzip2 -d tester.bz2 
+bandit12@bandit:/tmp/sigmalol$ file tester 
+tester: gzip compressed data, was "data4.bin", last modified: Thu Apr 10 14:22:57 2025, max compression, from Unix, original size modulo 2^32 20480
+bandit12@bandit:/tmp/sigmalol$ gunzip tester
+gzip: tester: unknown suffix -- ignored
+bandit12@bandit:/tmp/sigmalol$ mv tester tester.gz
+bandit12@bandit:/tmp/sigmalol$ ls
+data.txt  tester.gz
+bandit12@bandit:/tmp/sigmalol$ gunzip tester.gz 
+bandit12@bandit:/tmp/sigmalol$ ls
+data.txt  tester
+bandit12@bandit:/tmp/sigmalol$ file tester
+tester: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/sigmalol$ man tar
+bandit12@bandit:/tmp/sigmalol$ tar -x -v -f tester
+data5.bin
+bandit12@bandit:/tmp/sigmalol$ tar -x -v -f data5.bin
+data6.bin
+bandit12@bandit:/tmp/sigmalol$ file data6.bin
+data6.bin: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/sigmalol$ mv data6.bin data6.bin.bz2
+bandit12@bandit:/tmp/sigmalol$ ls
+data5.bin  data6.bin.bz2  data.txt  tester
+bandit12@bandit:/tmp/sigmalol$ bzip2 data6.bin.bz2
+bzip2: Input file data6.bin.bz2 already has .bz2 suffix.
+bandit12@bandit:/tmp/sigmalol$ 
+bandit12@bandit:/tmp/sigmalol$ bzip2 -d data6.bin.bz2
+bandit12@bandit:/tmp/sigmalol$ ls
+data5.bin  data6.bin  data.txt  tester
+bandit12@bandit:/tmp/sigmalol$ file data6.bin 
+data6.bin: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/sigmalol$ tar -xvf data6.bin
+data8.bin
+bandit12@bandit:/tmp/sigmalol$ file data8.bin 
+data8.bin: gzip compressed data, was "data9.bin", last modified: Thu Apr 10 14:22:57 2025, max compression, from Unix, original size modulo 2^32 49
+bandit12@bandit:/tmp/sigmalol$ mv data8.bin data8.bin.gz
+bandit12@bandit:/tmp/sigmalol$ gunzip data8.bin.gz 
+bandit12@bandit:/tmp/sigmalol$ ls
+data5.bin  data6.bin  data8.bin  data.txt  tester
+bandit12@bandit:/tmp/sigmalol$ file data8.bin 
+data8.bin: ASCII text
+bandit12@bandit:/tmp/sigmalol$ cat data8.bin 
+The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+bandit12@bandit:/tmp/sigmalol$ 
+bandit12@bandit:/tmp/sigmalol$ exit
+logout
+

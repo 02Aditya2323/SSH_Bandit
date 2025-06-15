@@ -1,0 +1,8 @@
+# Ignore leviathan folder
+leviathan/
+
+# Ignore terminal output
+Terminal Saved Output.txt
+
+# Ignore macOS system files
+.DS_Store 

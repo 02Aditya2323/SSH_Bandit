@@ -1,0 +1,101 @@
+bandit0 : bandit0 ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+bandit1: rev- : xFm92cay5PX1UWfgvEdtL6UgfPJGJ362....then reversing this tect....dk what's - file btw
+bandit2: cat spaces \in \ the\ file \name........basically whenever u create a file in mlinux with sapces then each word start acting as command in terminal; sp use this in linux for spaced file
+bandit3: hidden file here: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ....this is password for ls -l -a
+badnit4: cat ./-file*   : 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw ......here ./means current directory and * means eveerything from start; so basically menas cat all filesin current directory; here we didn't put $'t put cat directly cz. it's a dashed file and linux thinks that dashed file are actually commands here .....
+         $'t put cat directly cz. it's a dashed file and linux thinks that dashed file are actually commands here .....so in 2nd one u can also use cat ./- also....cat./* is the command to cat al
+         files in  a directory btw
+badnit5: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG      find . -type f -size 1033c ! -executable -exec file {} \; | grep "ASCII text"....and then cat ./          (see this command later)
+bandit6 :morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj  find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null .............here 2>/dev/null = shuts up error messages 
+bandit7: grep "millionth" data.txt      dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+bandit8: sort data.txt | uniq -u = sort lines, then find the one that appears just once....here '|' means use the output of first command as input of second command  4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+bandit9: strings data.txt | grep"="     ........we use strings here instead of cat cz. strings only gives ascii data ok.........FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+bandit10: strings datat.txt and base64 dcode     dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+bandit11: simple rot13 decode    7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+bandit12: FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn  ......bandit12.txt
+bandit13: connected to bandit14 localhost via sshprivate key..................ssh bandit14@localhost -p 2220 -i sshkey.private     basically this private  key acts as an authentication between shells
+bandit14: get password of this level from /etc/bandit_pass/bandit14  ......connecting via. nc localhost 30000 and submitting the password of this level i got and getting password for next level: 
+          8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+bandit15:kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx  ......performed a ssl connection.....nc is via. http; but ssl is encrypted and used this:
+          pass=8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo;openssl s_client -connect localhost:30001    -which connects to localhost and on providing the pass. to this level; gives pass. to next level.
+bandit16: bandit16.txt............here we scanned ports(nmap) and found open ports accepting ssl connection then we performed an openssl connection with that port with "-quiet" so that the start letter of
+           password 'k' doesn't interfere the commands....there we got ssh ley to enter next level...
+bandit17: x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO......diff passwords.old passwords.new
+bandit18: cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8 ........cool so we can simply perform commands without even completely connecting to the machine by simple syntax
+          ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme
+bandit19: bandit20-do is a SetUID binary that runs as bandit20. You don’t have permission to read the password directly.But can use this command to run this file as bandit20 and hence gaining password of
+           next level cz. we don't get password of another level at same time. : 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO.......... ./bandit20-do cat /etc/bandit_pass/bandit20.
+
+bandit20: for executable file:
+          bandit20@bandit:~$ ./suconnect 
+         Usage: ./suconnect <portnumber>
+         This program will connect to the given port on localhost using TCP. If it receives the correct password from the other side, the next password is transmitted back.
+	 not much understood tho; but https://chatgpt.com/share/6828a847-cb34-8005-9e2a-a7245eb521e3..... EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+ 	we started listening localhost nc -l -p 1234 and connected to it via client ./suconnect to get password.(we got password only when the localhost is listening and ./suconnect is connected on same 
+	port.
+
+bandit21: I myslef dk what i did here....see the soluion: tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
+	  Ig when i reached /etc/cron.d and cat bandit22 in that; i saw that on reboot the password of a file is getting stored in another file so i simply catted that file. bandit21.txt
+
+bandit22: https://mayadevbe.me/posts/overthewire/bandit/level23/....follow this......0Zf11ioIjMVN551jX3CmStKLYqjk54Ga
+
+bandit23:gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8..........the cron job is that it's executing and deleting a file in /var/spool/bandit24 every 60 seconds...and the password is in /etc/bandit_pass/bandit24 as             always....but we obviously can't see that...so since this cronjob is executing as bandit24 we write a script....this script exeutes i.e. copies passwords and sends it to /tmp/yaypotato/password.
+	 Now we cant create,copy,move any file in /var/spool/bandit24 so we create it in /fool inside it....and give chmod 777 and chmod +x permission to that file....next in tmp we create /tmp/yaypotato          and give it chmod 777 permission to recieve the password file then after 60 seconds we get password file...
+                 script:
+                 #!/bin/bash
+                 cat /etc/bandit_pass/bandit24 > /tmp/yaypotato/password                 .....scrsht.s saved
+
+bandit24: iCi86ttT4KSNe1armKiwbQNmB3YJP3q4 .....ran the script for output.....in /tmp
+ 	  script:
+	
+	 #!/bin/bash
+	> possibility.txt  
+	for i in {0000..9999}
+	do 
+    	echo gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 $i >> possibility.txt
+	done
+	cat possibility.txt | nc localhost 30002 > result.txt
+
+
+bandit25: s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ.....here this shell is running in /showtext bash......and whenever i ssh into system; just a text displays and exits.....so i minimse the screen and whenever the 		text comes up; i press v and thus entering vim mode of that text.....now in vim the command ':r' is for reading and pasting the command like i di :r /etc/bandit_pass/bandit26 and got password 	    from the system.......also the more command means just to display the file in vim mode which happens with tex.txt
+	    https://github.com/Cathon/mySolutions/blob/master/overthewire/Bandit/Level_25.md........this is referred
+
+
+bandit26: lol...so in vim can do :set shell=/bin/bash and then :shell......this way can get actual shell for bandit 26......now in this shell; execute ./bandit27-do cat/etc/bandit_pass/bandit27...
+	   means it runsa as another user to grap the password upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB.......meanwhile all of this was happening in vim shell only; like form getting a shell of bandit26 till here
+
+
+bandit27: Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN ........first clone the repo at loclahost:2220 via git clone() and then in repo u will get readme and password
+		git clone ssh://bandit29-git@localhost:2220/home/bandit29-git/repo
+
+bandit28: 4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7......dk what i did but used git log( for checking history of commits), git checkout(to swithc between branches)
+
+bandit29:qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL........just see the video.	
+
+bandit30:fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy...agein everything was in git tag ....and then git show secre.....
+
+
+bandit31: 3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K...deleted the gitgnore file cz. it has *.txt means ignore all files with .txt.....then git checkout master means shifted to master branch
+	  then..echo "May I come in?" > key.txt
+		git add key.txt
+		git commit -m "Add key.txt with polite message"
+	        git push origin master
+
+bandit32: tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0......read this:https://mayadevbe.me/posts/overthewire/bandit/level33/..........basically inputted $0 to get normal shell
+
+bandit33: :)
+
+
+
+
+
+
+
+
+:q to quit; :q! to discard changes , :wq to save and close changes ....there r 3 modes- command, visual, insert mode....type esc+i to enter insert mode etc. 
+
+
+
+
+
+

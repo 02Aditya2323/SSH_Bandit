@@ -1,0 +1,120 @@
+bandit21@bandit:~$ 
+bandit21@bandit:~$ cd /etc
+bandit21@bandit:/etc$ ls
+acpi                    crontab               gai.conf             issue.bandit                locale.alias    nanorc                  profile        shadow-            udev
+adduser.conf            cron.weekly           gdb                  issue.bandit.fail           locale.conf     needrestart             profile.d      shells             udisks2
+alternatives            cron.yearly           gitconfig            issue.bandit.localhost      locale.gen      netconfig               protocols      skel               ufw
+apache2                 cryptsetup-initramfs  gnutls               issue.drifter               localtime       netplan                 python3        sos                update-manager
+apparmor                crypttab              gprofng.rc           issue.drifter.fail          logcheck        network                 python3.12     ssh                update-motd.d
+apparmor.d              dbus-1                groff                issue.drifter.localhost     login.defs      networkd-dispatcher     rc0.d          ssl                update-notifier
+apport                  debconf.conf          group                issue.formulaone            logrotate.conf  networks                rc1.d          stunnel            usb_modeswitch.conf
+apt                     debian_version        group-               issue.formulaone.fail       logrotate.d     newt                    rc2.d          subgid             usb_modeswitch.d
+bandit_pass             debuginfod            grub.d               issue.formulaone.localhost  lsb-release     nftables.conf           rc3.d          subgid-            vconsole.conf
+bash.bashrc             default               gshadow              issue.krypton               ltrace.conf     nsswitch.conf           rc4.d          subuid             vim
+bash_completion         deluser.conf          gshadow-             issue.krypton.fail          lvm             opt                     rc5.d          subuid-            vmware-tools
+bash_completion.d       depmod.d              gss                  issue.krypton.localhost     machine-id      os-release              rc6.d          sudo.conf          vtrgb
+bindresvport.blacklist  dhcp                  hdparm.conf          issue.net                   magic           overlayroot.conf        rcS.d          sudoers            watchdog.conf
+binfmt.d                dhcpcd.conf           hibagent-config.cfg  kernel                      magic.mime      overlayroot.local.conf  resolv.conf    sudoers.d          wgetrc
+byobu                   dpkg                  hibinit-config.cfg   krypton_pass                manpath.config  PackageKit              rmt            sudo_logsrvd.conf  X11
+ca-certificates         drifter_pass          host.conf            landscape                   mdadm           pam.conf                rpc            supercat           xattr.conf
+ca-certificates.conf    e2scrub.conf          hostname             ldap                        mime.types      pam.d                   rsyslog.conf   supervisor         xdg
+chrony                  ec2_version           hosts                ld.so.cache                 mke2fs.conf     passwd                  rsyslog.d      sysctl.conf        xinetd.conf
+cloud                   emacs                 hosts.allow          ld.so.conf                  ModemManager    passwd-                 screenrc       sysctl.d           xinetd.d
+console-setup           environment           hosts.deny           ld.so.conf.d                modprobe.d      perl                    security       sysstat            xml
+credstore               ethertypes            init.d               legal                       modules         pki                     selinux        systemd            zsh_command_not_found
+credstore.encrypted     fonts                 initramfs-tools      libaudit.conf               modules-load.d  plymouth                sensors3.conf  terminfo
+cron.d                  formulaone_pass       inputrc              libblockdev                 motd            pm                      sensors.d      timezone
+cron.daily              fstab                 iproute2             libibverbs.d                mtab            polkit-1                services       tmpfiles.d
+cron.hourly             fuse.conf             iscsi                libnl-3                     multipath       pollinate               sgml           ubuntu-advantage
+cron.monthly            fwupd                 issue                lighttpd                    multipath.conf  ppp                     shadow         ucf.conf
+bandit21@bandit:/etc$ cd cron.d
+bandit21@bandit:/etc/cron.d$ ls
+clean_tmp  cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  e2scrub_all  otw-tmp-dir  sysstat
+bandit21@bandit:/etc/cron.d$ man crontab
+bandit21@bandit:/etc/cron.d$ cat ./
+cat: ./: Is a directory
+bandit21@bandit:/etc/cron.d$ cat ./*
+*/30 * * * * root find /tmp -amin 60 -type f -delete &> /dev/null && find /tmp -amin 5 -type d -empty -delete &> /dev/null
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+30 3 * * 0 root test -e /run/systemd/system || SERVICE_MODE=1 /usr/lib/x86_64-linux-gnu/e2fsprogs/e2scrub_all_cron
+10 3 * * * root test -e /run/systemd/system || SERVICE_MODE=1 /sbin/e2scrub_all -A -r
+cat: ./otw-tmp-dir: Permission denied
+# The first element of the path is a directory where the debian-sa1
+# script is located
+PATH=/usr/lib/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Activity reports every 10 minutes everyday
+5-55/10 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1
+
+# Additional run at 23:59 to rotate the statistics file
+59 23 * * * root command -v debian-sa1 > /dev/null && debian-sa1 60 2
+bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+bandit21@bandit:/etc/cron.d$ ls
+clean_tmp  cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  e2scrub_all  otw-tmp-dir  sysstat
+bandit21@bandit:/etc/cron.d$ cd cronjob_bandit22
+-bash: cd: cronjob_bandit22: Not a directory
+bandit21@bandit:/etc/cron.d$ cat cronjob_bandit2
+cat: cronjob_bandit2: No such file or directory
+bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+bandit21@bandit:/etc/cron.d$ cd /usr/bin/cronjob_bandit22.sh
+-bash: cd: /usr/bin/cronjob_bandit22.sh: Not a directory
+bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+bandit21@bandit:/etc/cron.d$ reboot
+User bandit7 is logged in on pts/31.
+User bandit25 is logged in on pts/12.
+User bandit24 is logged in on pts/47.
+User bandit20 is logged in on pts/135.
+User bandit20 is logged in on pts/7.
+User bandit1 is logged in on sshd.
+User bandit13 is logged in on pts/44.
+User bandit5 is logged in on sshd.
+User bandit12 is logged in on sshd.
+User bandit11 is logged in on sshd.
+User bandit4 is logged in on sshd.
+User bandit6 is logged in on sshd.
+User bandit15 is logged in on sshd.
+User bandit0 is logged in on sshd.
+User bandit23 is logged in on sshd.
+User bandit16 is logged in on sshd.
+User bandit12 is logged in on sshd.
+User bandit16 is logged in on sshd.
+User bandit16 is logged in on sshd.
+User bandit5 is logged in on sshd.
+User bandit5 is logged in on sshd.
+User bandit14 is logged in on sshd.
+User bandit0 is logged in on sshd.
+User bandit14 is logged in on sshd.
+User bandit4 is logged in on sshd.
+User bandit24 is logged in on sshd.
+User bandit16 is logged in on sshd.
+User bandit0 is logged in on sshd.
+User bandit3 is logged in on sshd.
+User bandit8 is logged in on sshd.
+User bandit0 is logged in on sshd.
+User bandit16 is logged in on sshd.
+User bandit3 is logged in on sshd.
+User bandit9 is logged in on sshd.
+Please retry operation after closing inhibitors and logging out other users.
+Alternatively, ignore inhibitors and users with 'systemctl reboot -i'.
+bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+bandit21@bandit:/etc/cron.d$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
+bandit21@bandit:/etc/cron.d$ cat /etc/bandit_pass/bandit22
+cat: /etc/bandit_pass/bandit22: Permission denied
+bandit21@bandit:/etc/cron.d$ 
+
